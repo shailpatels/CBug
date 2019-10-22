@@ -10,5 +10,10 @@
 #define MAXBUF 1024
 
 int SAVEFD = 0;
+//symmetric check
+int LPAREN = 0;
+int RPAREN = 0;
+int LCURLY = 0;
+int RCURLY = 0;
 
 #endif
