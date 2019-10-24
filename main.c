@@ -28,6 +28,7 @@ void parseArgs(int argc, char ** argv){
 
 static volatile int RUN = 1;
 void sigcapt(int sig){
+   printf("got signal %d\n", sig);
    RUN = 0; 
 }
 
@@ -116,6 +117,8 @@ int isSymmetric(char * str){
     
     if (LPAREN > 0)
         return 0;
+    
+    return 0;
 }
 
 void readErr(void){
@@ -136,15 +139,9 @@ int didErr(void){
 
 void repl(int fd, char * fname){
     char buf[MAXBUF]; 
-    char cwd[MAXBUF];
     char tgt[10];
     
-    if (!getcwd(cwd,MAXBUF-1)){
-        fprintf(stderr, "Failed to get current working directory\n");
-        return;
-    } 
-
-    int len,r,w = 0;
+    int len,w = 0;
     while(RUN){
         //READ
         printf(">");
@@ -199,6 +196,8 @@ void repl(int fd, char * fname){
 
     //cleanup the compiled target
     int ret = unlink(tgt);
+    if (ret < 0)
+        printf("Warning failed to cleanup %s compiled file\n", tgt);
 }
 
 int main(int argc, char ** argv){
