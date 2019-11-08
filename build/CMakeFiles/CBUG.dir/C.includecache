@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shail/Documents/C/CBug/main.c
+stdio.h
+-
+stdlib.h
+-
+fcntl.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+unistd.h
+-
+string.h
+-
+signal.h
+-
+time.h
+-
+stdarg.h
+-
+ctype.h
+-
+main.h
+/home/shail/Documents/C/CBug/main.h
+
+/home/shail/Documents/C/CBug/main.h
+
