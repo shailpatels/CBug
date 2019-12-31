@@ -238,4 +238,11 @@ int main(int argc, char ** argv){
         perror("");
         return EXIT_FAILURE;
     }
+    
+    ret = unlink(".out");
+    if (ret < 0){
+        fprintf(stderr,"Failed to cleanup tmp file: \".out\"");
+        perror("");
+        return EXIT_FAILURE;
+    }
 }
