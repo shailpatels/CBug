@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -28,6 +28,8 @@ time.h
 stdarg.h
 -
 ctype.h
+-
+errno.h
 -
 main.h
 /home/shail/Documents/C/CBug/main.h

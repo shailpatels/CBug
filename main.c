@@ -9,6 +9,7 @@
 #include <time.h>
 #include <stdarg.h>
 #include <ctype.h>
+#include <errno.h>
 #include "main.h"
 
 /* 
@@ -196,7 +197,7 @@ void repl(int fd, char * fname){
 
     //cleanup the compiled target
     int ret = unlink(tgt);
-    if (ret < 0)
+    if (ret < 0 && errno != ENOENT)
         printf("Warning failed to cleanup %s compiled file\n", tgt);
 }
 
@@ -233,14 +234,14 @@ int main(int argc, char ** argv){
     if (!SAVEFD)
         ret = unlink(fname);
 
-    if (ret < 0){
+    if (ret < 0 && errno != ENOENT){
         fprintf(stderr,"Failed to cleanup tmp file: \"%s\" ", fname);
         perror("");
         return EXIT_FAILURE;
     }
     
     ret = unlink(".out");
-    if (ret < 0){
+    if (ret < 0 && errno != ENOENT){
         fprintf(stderr,"Failed to cleanup tmp file: \".out\"");
         perror("");
         return EXIT_FAILURE;
